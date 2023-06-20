@@ -1,0 +1,63 @@
+﻿@model List<MindRuby.Cowin.Entities1.MmbersDetail>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Family List</h2>
+@{
+    var id = User.Identity.GetUserId();
+}
+<p>@id</p>
+<br />
+<p>@Html.ActionLink("Add Member", "AddMember", "Member", new { @class = "btn btn-primary" }, null)</p>
+<table id="Family-list" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Member Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>D.O.B</th>
+            <th>Aadhar No.</th>
+            <th>Dose 1 Status</th>
+            <th>Dose 2 Status</th>
+            <th>Schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MemberID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.DOB</td>
+                    <td>@item.Aadhar</td>
+                    <td>@item.Dose1Status</td>
+                    <td>@item.Dose2Status</td>
+                    @{ if (item.Dose1Status == false)
+                        {
+                            <td>@Html.ActionLink("Schedule Slot 1", "Index", "VaccineCentre", new {id=item.MemberID}, null)</td>
+                        }
+
+                        if (item.Dose1Status == true)
+                        {
+                            if (item.Dose2Status == false)
+                            {
+                                <td>@Html.ActionLink("Schedule Slot 2", "index", "VaccineCentre", new { id = item.MemberID }, null)</td>
+                            }
+                        }
+                        if (item.Dose1Status == true)
+                        {
+                            if (item.Dose2Status == true)
+                            {
+                                <td>Dose Completed</td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>

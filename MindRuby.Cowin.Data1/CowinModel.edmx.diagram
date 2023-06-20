@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9b803a6a37084a459a7b3161b6f6c8e5" Name="Diagram1">
+        <EntityTypeShape EntityType="Learn_DBModel.CentreDetail" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Learn_DBModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Learn_DBModel.AspNetUser" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Learn_DBModel.MmbersDetail" Width="1.5" PointX="5.625" PointY="5" />
+        <AssociationConnector Association="Learn_DBModel.FK__MmbersDet__Famil__14270015" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

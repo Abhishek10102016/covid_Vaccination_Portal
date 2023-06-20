@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="entityframework" Version="6.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MindRuby.Cowin.Data\MindRuby.Cowin.Data.csproj" />
+    <ProjectReference Include="..\MindRuby.Cowin.Entities\MindRuby.Cowin.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

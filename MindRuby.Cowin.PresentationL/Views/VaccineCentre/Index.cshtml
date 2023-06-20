@@ -1,0 +1,39 @@
+﻿@model List<MindRuby.Cowin.Entities1.CentreDetail>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vaccine Centre</h2>
+
+<br />
+<table id="Family-list" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Centre ID</th>
+            <th>Centre Name</th>
+            <th>Pincode</th>
+            <th>Vaccine Name</th>
+            <th>Cost</th>
+            <th>Available Vaccines</th>
+            <th>Book</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.CentreID</td>
+                    <td>@item.CentreName</td>
+                    <td>@item.Pincode</td>
+                    <td>@item.VaccineName</td>
+                    <td>@item.cost</td>
+                    <td>@item.AvailableVaccine</td>
+                    <td>booking update</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
