@@ -6,7 +6,7 @@
 
 <h2>Family List</h2>
 @{
-    var id = User.Identity.GetUserId();
+    var id = User.Identity.GetUserName();
 }
 <p>@id</p>
 <br />
@@ -38,14 +38,14 @@
                     <td>@item.Dose2Status</td>
                     @{ if (item.Dose1Status == false)
                         {
-                            <td>@Html.ActionLink("Schedule Slot 1", "Index", "VaccineCentre", new {id=item.MemberID}, null)</td>
+                            <td>@Html.ActionLink("Schedule Slot 1", "Index", "VaccineCentre", new { memberId=item.MemberID }, null)</td>
                         }
 
                         if (item.Dose1Status == true)
                         {
                             if (item.Dose2Status == false)
                             {
-                                <td>@Html.ActionLink("Schedule Slot 2", "index", "VaccineCentre", new { id = item.MemberID }, null)</td>
+                                <td>@Html.ActionLink("Schedule Slot 2", "index", "VaccineCentre", new { memberId = item.MemberID }, null)</td>
                             }
                         }
                         if (item.Dose1Status == true)

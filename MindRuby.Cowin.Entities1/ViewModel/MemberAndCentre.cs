@@ -8,7 +8,7 @@ namespace MindRuby.Cowin.Entities1.ViewModel
 {
     public class MemberAndCentre
     {
-        public MmbersDetail memberDetail { get; set; }
+        public List<MmbersDetail> memberDetail { get; set; }
         public List<CentreDetail> centreDetail { get; set; }
     }
 }

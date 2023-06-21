@@ -13,6 +13,8 @@ namespace MindRuby.Cowin.Entities1
     [MetadataType(typeof(mmbersDetailMetaData))]
     public partial class MmbersDetail
     {
+        
+
         class mmbersDetailMetaData
         {
             public int MemberID { get; set; }

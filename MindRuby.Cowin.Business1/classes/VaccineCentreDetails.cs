@@ -15,13 +15,34 @@ namespace MindRuby.Cowin.Business1.classes
         {
             _context = new Learn_DBEntities();
         }
-        public List<CentreDetail> Details()
+        public MemberAndCentre Details(int memberId)
         {
-            var memberAndCentre = new MemberAndCentre()
+            var memberDetail = _context.MmbersDetails.Where(c => c.MemberID == memberId).ToList();
+            var centreDetail = _context.CentreDetails.ToList();
+            var memberAndCentres = new MemberAndCentre
             {
-                
+                memberDetail = memberDetail,
+                centreDetail = centreDetail
             };
-            return _context.CentreDetails.ToList(); 
+//            var resultList = new List<MemberAndCentre>();
+  //          resultList.Add(memberAndCentres);
+            return memberAndCentres;
+        }
+        public void BookSlot(int memberID,int centreID, bool dose1Satus, bool dose2Satus)
+        {
+           var centre = _context.CentreDetails.Single(c=>c.CentreID==centreID);
+            var member = _context.MmbersDetails.Single(c=>c.MemberID==memberID);
+            if (dose2Satus == false && dose1Satus == true)
+            {
+                member.Dose2Status = true;
+            }
+            if (dose1Satus==false)
+            {
+                member.Dose1Status = true;
+            }
+            centre.AvailableVaccine = centre.AvailableVaccine - 1;
+            _context.SaveChanges();
+            
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿@model List<MindRuby.Cowin.Entities1.CentreDetail>
+﻿@model MindRuby.Cowin.Entities1.ViewModel.MemberAndCentre
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Vaccine Centre</h2>
 
+<h2>Vaccine Centre</h2>
+<h3>Book your vaccine @{ foreach (var name in Model.memberDetail) {@name.Name } }</h3>
 <br />
 <table id="Family-list" class="table table-bordered">
     <thead>
@@ -20,17 +21,41 @@
     </thead>
     <tbody>
         @{
-            foreach(var item in Model)
+            foreach (var item in Model.centreDetail)
             {
                 <tr>
                     <td>@item.CentreID</td>
                     <td>@item.CentreName</td>
                     <td>@item.Pincode</td>
                     <td>@item.VaccineName</td>
-                    <td>@item.cost</td>
+                    @{foreach (var member in Model.memberDetail)
+                        {
+                            if (member.Age < 10)
+                            {
+                                <td>Free</td>
+                            }
+
+                            if (member.Age > 60)
+                            {
+                                <td>Free</td>
+                            }
+                            if (member.Age >= 10)
+                            {
+                                if (member.Age <= 60)
+                                {
+                                    <td>@item.cost</td>
+                                }
+                            }
+                        }
+                    }
                     <td>@item.AvailableVaccine</td>
-                    <td>booking update</td>
+                    @{foreach (var member in Model.memberDetail)
+                        {
+                                        <td>@Html.ActionLink("Book Slot", "BookSlot", "VaccineCentre", new { memberID= member.MemberID, centreID = item.CentreID, dose1Status = member.Dose1Status, dose2Status = member.Dose2Status }, null)</td>
+                        }
+                    }
                 </tr>
+
             }
         }
     </tbody>
